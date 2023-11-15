@@ -9,7 +9,7 @@
 # by Stephan Raabe (2023) 
 # ----------------------------------------------------- 
 
-#ToDO: replace eith my libraries
+#ToDO: replace with my libraries
 
 # ------------------------------------------------------
 # Function: Is package installed
@@ -80,8 +80,47 @@ _installPackagesYay() {
     printf "AUR packags not installed:\n%s\n" "${toInstall[@]}";
     yay --noconfirm -S "${toInstall[@]}";
 }
+# function that will test for a package and if not found it will attempt to install it
+_install_software() {
+	case $1 in
+	pacman)
+		APP="sudo pacman"
+		;;
+	paru)
+		APP="paru"
+		;;
+	esac
+	if $APP -Q $2 &>>/dev/null; then
+		echo -e "$COK - $2 is already installed."
+	else
+		# no package found so installing
+		echo -e "$CNT - Now installing $2 ..."
+		$APP -S --noconfirm $2 &>>$INSTLOG
+		# test to make sure package installed
+		if $APP -Q $2 &>>/dev/null; then
+			echo -e "\e[1A\e[K$COK - $2 was installed."
+		else
+			# if this is hit then a package is missing, exit to review log
+			echo -e "$CER - $2 install had failed, please check the install.log"
+			exit
+		fi
+	fi
+}
 
+_install_flatpak() {
+	echo -e "$CNT - installing flatpak applications"
+	for SOFTWR in ${flatpak_stage[@]}; do
+		flatpak install --user flathub -y $SOFTWR
+	done
+}
 
+#remove unwanted applications
+remove_software() {
+	if $APP -Q $1 &>>/dev/null; then
+		sudo pacman -Rcns --noconfirm $1 &>>$INSTLOG
+		echo -e "$COK - $1 removed."
+	fi
+}
 # ------------------------------------------------------
 # Create symbolic links
 # ------------------------------------------------------
