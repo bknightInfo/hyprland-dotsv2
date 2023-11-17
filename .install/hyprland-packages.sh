@@ -10,6 +10,7 @@ packagesPacman=(
     "dunst" 
     "eza" 
     "fzf"
+    "gnome-keyring"
     "polkit-gnome"
     "gvfs"
     "hyprland" 
@@ -37,6 +38,7 @@ packagesPacman=(
     "pavucontrol" 
     "papirus-icon-theme"
     "playerctl"
+    "podman"
     "os-prober"
     "qt5-wayland"
     "qt6-wayland"
@@ -74,6 +76,6 @@ packagesYay=(
 flatpak_applications=(
 	io.github.celluloid_player.Celluloid
 	org.libreoffice.LibreOffice
-	com.spotify.Client
+	dev.alextren.Spot
 	org.gnome.Lollypop
 )

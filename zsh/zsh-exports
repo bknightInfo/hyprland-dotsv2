@@ -8,6 +8,7 @@ export BROWSER="brave"
 #append path
 export PATH="$PATH:$HOME/.local/share/bin"
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH="$PATH:$HOME/.local/bin/"
 
 # xdg directories
 export XDG_CONFIG_HOME="$HOME/.config"

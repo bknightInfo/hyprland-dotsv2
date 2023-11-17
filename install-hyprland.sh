@@ -186,12 +186,15 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
     kvantummanager --set Tokyo-Night
 
+    #install distrobox
+    curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --prefix ~/.local
+
     #flatpak fix
-	sudo flatpak override --filesystem=$HOME/.local/share/themes
-	sudo flatpak override --filesystem=$HOME/.local/share/icons
-	sudo flatpak override --env=GTK_THEME="Tokyonight-Dark-B"
-	sudo flatpak override --env=ICON_THEME="Miya-black-dark"
-	flatpak uninstall --unused && flatpak repair
+	#sudo flatpak override --filesystem=$HOME/.local/share/themes
+	#sudo flatpak override --filesystem=$HOME/.local/share/icons
+	#sudo flatpak override --env=GTK_THEME="Tokyonight-Dark-B"
+	#sudo flatpak override --env=ICON_THEME="Miya-black-dark"
+	#flatpak uninstall --unused && flatpak repair
 
     # ------------------------------------------------------
     # grub setup
