@@ -38,7 +38,6 @@ packagesPacman=(
     "pavucontrol" 
     "papirus-icon-theme"
     "playerctl"
-    "podman"
     "os-prober"
     "qt5-wayland"
     "qt6-wayland"
@@ -63,11 +62,13 @@ packagesYay=(
 	"grimblast-git"
     "paru"
     "pywal"
+    "pyprland"
     "sddm-git"
 	"sddm-config-editor-git"
 	"solaar"
     "swaylock-effects" 
     "swww" 
+    "thorium-browser-bin"
     "wlogout"
     "zsh-autocomplete-git"
 );
@@ -78,4 +79,24 @@ flatpak_applications=(
 	org.libreoffice.LibreOffice
 	dev.alextren.Spot
 	org.gnome.Lollypop
+    sudo pacman -S --noconfirm 
 )
+
+# distrobox-create -n archbox -i archlinux
+# distrobox enter archbox
+
+
+# sudo pacman -S --noconfirm Celluloid
+# sudo pacman -S --noconfirm k3b 
+# sudo pacman -S --noconfirm Lollypop
+# sudo pacman -S --noconfirm picard
+# paru -S --noconfirm spotube
+# paru -S --noconfirm visual-studio-code-bin
+
+# distrobox-export -a k3b
+# distrobox-export -a spotube
+# distrobox-export -a Celluloid
+# distrobox-export -a Lollypop
+# distrobox-export -a code
+# kate
+

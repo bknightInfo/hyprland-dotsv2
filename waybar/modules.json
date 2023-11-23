@@ -63,17 +63,6 @@
         "tooltip": false
     },
 
-    // Updates Count
-    "custom/updates": {
-        "format": "  {}",
-        "tooltip-format": "{}",
-        "escape": true,
-        "return-type": "json",       
-        "exec": "~/dotfiles/scripts/updates.sh",
-        "restart-interval": 60,
-        "on-click": "kitty -e paru -Syum",
-        "tooltip": false
-    },
     
     // Wallpaper
     "custom/wallpaper": {
@@ -283,6 +272,17 @@
         "on-click-right": "killall spotify",
         "on-scroll-up": "playerctl -p spotify next",
         "on-scroll-down": "playerctl -p spotify previous"
+    },
+
+    "custom/updates": {
+        "format": "  {}",
+        "tooltip-format": "{}",
+        "escape": true,
+        "return-type": "json",       
+        "exec": "~/dotfiles/scripts/updates.sh",
+        "restart-interval": 60,
+        "on-click": "kitty -e paru -Syu",
+        "tooltip": false
     },
 
     "custom/weather": {

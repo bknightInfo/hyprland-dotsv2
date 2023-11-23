@@ -1,0 +1,18 @@
+[pyprland]
+plugins = [
+  "scratchpads",
+]
+
+[scratchpads.term]
+animation = "fromTop"
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
+size = "75% 60%"
+
+[scratchpads.chatgtp]
+animation = "fromRight"
+command = "thorium-browser --app=https://chat.openai.com"
+class = "kitty-dropterm"
+lazy = true
+size = "40% 80%"
+unfocus = "hide"
