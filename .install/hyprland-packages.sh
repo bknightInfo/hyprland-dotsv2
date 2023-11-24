@@ -73,30 +73,4 @@ packagesYay=(
     "zsh-autocomplete-git"
 );
 
-#to do
-flatpak_applications=(
-	io.github.celluloid_player.Celluloid
-	org.libreoffice.LibreOffice
-	dev.alextren.Spot
-	org.gnome.Lollypop
-    sudo pacman -S --noconfirm 
-)
-
-# distrobox-create -n archbox -i archlinux
-# distrobox enter archbox
-
-
-# sudo pacman -S --noconfirm Celluloid
-# sudo pacman -S --noconfirm k3b 
-# sudo pacman -S --noconfirm Lollypop
-# sudo pacman -S --noconfirm picard
-# paru -S --noconfirm spotube
-# paru -S --noconfirm visual-studio-code-bin
-
-# distrobox-export -a k3b
-# distrobox-export -a spotube
-# distrobox-export -a Celluloid
-# distrobox-export -a Lollypop
-# distrobox-export -a code
-# kate
 
