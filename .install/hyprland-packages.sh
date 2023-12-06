@@ -66,7 +66,6 @@ packagesParu=(
     "fnm-bin"
     "grimblast-git"
     "python-pywal"
-    "pyprland"
 	"solaar"
     "swww" 
     "swaylock-effects" 
