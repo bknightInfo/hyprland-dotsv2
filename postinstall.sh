@@ -1,14 +1,14 @@
 #patch for ML4W dotfiles
 
 # remove packages
-sudo pacman -Rcns --noconfirm vim alacritty chromium mpv freerdp mousepad figlet vlc python-pip python-psutil python-rich  python-click qalculate-gtk gum man-pages xdg-desktop-portal pfetch trizen pacseek sddm-sugar-candy-git wlr-randr
+sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad figlet vlc python-pip python-psutil python-rich python-click qalculate-gtk gum man-pages xdg-desktop-portal pfetch trizen pacseek sddm-sugar-candy-git wlr-randr
 sudo pacman -Rns --noconfirm $(pacman -Qtdq) 
 
 # install packages
-sudo pacman -S bat cronie flatpak neofetch greetd gvfs lf less kitty noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
+sudo pacman -S --noconfirm bat cronie flatpak neofetch greetd gvfs lf less kitty noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
 
 # aur install
-yay -S --noconfirm brave-bin cava bibata-cursor-theme fnm-bin grimblast-git solaar zsh-autocomplete-git paru-bin
+yay -S --noconfirm brave-bin cava bibata-cursor-theme fnm-bin grimblast-git solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
 
 # flatpaks
 flatpak install -y io.github.celluloid_player.Celluloid org.gnome.Lollypop org.libreoffice.LibreOffice org.filezillaproject.Filezilla com.github.tchx84.Flatseal
@@ -102,6 +102,10 @@ cp dotfiles/2560x1440@120.conf ~/dotfiles/hypr/conf/monitors/
 cp dotfiles/power.sh ~/dotfiles/scripts/
 cp -f dotfiles/updates.sh ~/dotfiles/scripts/
 cp -f dotfiles/config-power.rasi ~/dotfiles/rofi/
+
+# Copy Cava weather 
+cp dotfiles/cava.sh ~/dotfiles/hypr/scripts/
+cp dotfiles/weather-get.sh ~/dotfiles/hypr/scripts/
 
 # Copy wallpapers
 cp -f wallpaper/*.* ~/wallpaper/
