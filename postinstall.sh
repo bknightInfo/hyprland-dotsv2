@@ -10,13 +10,14 @@ sudo pacman -S --noconfirm bat cronie flatpak neofetch greetd gvfs lf less kitty
 yay -S --noconfirm brave-bin cava cmus bibata-cursor-theme fnm-bin grimblast-git solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
 
 # flatpaks
-flatpak install -y io.github.celluloid_player.Celluloid org.gnome.Lollypop org.libreoffice.LibreOffice org.filezillaproject.Filezilla com.github.tchx84.Flatseal
+flatpak install -y io.github.celluloid_player.Celluloid org.libreoffice.LibreOffice org.filezillaproject.Filezilla com.github.tchx84.Flatseal
 
 # remove orphaned packages
 sudo pacman -Rns $(pacman -Qtdq) 
 
 # copy dotfiles (cava, kitty, lf, neofetch,starship, zsh)
 cp -r dotfiles/cava ~/dotfiles/
+cp -r dotfiles/cmus ~/dotfiles/
 cp -r dotfiles/lf ~/dotfiles/
 cp -r dotfiles/kitty ~/dotfiles/
 cp -r dotfiles/neofetch ~/dotfiles/
@@ -26,6 +27,7 @@ cp -f dotfiles/starship.toml ~/dotfiles/starship/starship.toml
 
 # setup symbolic links
 ln -s ~/dotfiles/cava/ ~/.config/
+ln -s ~/dotfiles/cmus/ ~/.config/
 ln -s ~/dotfiles/lf/ ~/.config/
 ln -s ~/dotfiles/kitty/ ~/.config/
 ln -s ~/dotfiles/neofetch/ ~/.config/
@@ -53,7 +55,7 @@ if [ ! -d "$SCRNSHT" ]; then
 	mkdir -p $SCRNSHT
 fi
 
-APPFOLD=~.local/share/applications
+APPFOLD=~/.local/share/applications
 if [ ! -d "$APPFOLD" ]; then
 	mkdir -p $APPFOLD
 fi
