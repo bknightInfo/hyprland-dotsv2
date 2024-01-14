@@ -113,10 +113,6 @@ echo -e "$CNT - Timer Services...\n"
 sudo systemctl enable reflector.timer
 sudo systemctl enable fstrim.timer
 
-#Hyprland keybindings
-cp dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
-cp dotfiles/3440x1440@144.conf ~/dotfiles/hypr/conf/monitors/
-
 # Copy power scripts
 cp dotfiles/power.sh ~/dotfiles/scripts/
 cp -f dotfiles/updates.sh ~/dotfiles/scripts/
@@ -129,6 +125,13 @@ cp dotfiles/weather-get.sh ~/dotfiles/hypr/scripts/
 
 # Copy wallpapers
 cp -f wallpaper/*.* ~/wallpaper/
+
+# override settings from dotfiles
+cp dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
+cp dotfiles/3440x1440@144.conf ~/dotfiles/hypr/conf/monitors/
+cp -f dotfiles/keyboard.conf ~/dotfiles/hypr/conf/
+cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/
+cp -f dotfiles/monitor.conf ~/dotfiles/hypr/conf/
 
 #Display manager
 sudo pacman -S greetd
