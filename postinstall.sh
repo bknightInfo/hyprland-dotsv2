@@ -1,23 +1,18 @@
 #patch for ML4W dotfiles
 
 # remove packages
-sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad vlc python-pip python-psutil python-rich python-click qalculate-gtk man-pages xdg-desktop-portal pfetch trizen pacseek sddm-sugar-candy-git wlr-randr
+sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad python-pip python-psutil python-rich python-click qalculate-gtk man-pages xdg-desktop-portal pfetch trizen pacseek wlr-randr xclip xautolock
 
 # install packages
-sudo pacman -S --noconfirm bat cronie flatpak neofetch greetd gvfs lf less kitty noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
+sudo pacman -S --noconfirm bat cronie neofetch greetd lf less kitty noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
 
 # aur install
-yay -S --noconfirm brave-bin cava cmus bibata-cursor-theme fnm-bin grimblast-git solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
-
-# flatpaks
-flatpak install -y io.github.celluloid_player.Celluloid org.libreoffice.LibreOffice org.filezillaproject.Filezilla com.github.tchx84.Flatseal
-
-# remove orphaned packages
-sudo pacman -Rns $(pacman -Qtdq) 
+yay -S --noconfirm brave-bin cava cmus deadbeef fnm-bin grimblast-git ngw-look-bin solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
 
 # copy dotfiles (cava, kitty, lf, neofetch,starship, zsh)
 cp -r dotfiles/cava ~/dotfiles/
 cp -r dotfiles/cmus ~/dotfiles/
+cp -r dotfiles/deadbeef ~/dotfiles/
 cp -r dotfiles/lf ~/dotfiles/
 cp -r dotfiles/kitty ~/dotfiles/
 cp -r dotfiles/neofetch ~/dotfiles/
@@ -28,13 +23,14 @@ cp -f dotfiles/starship.toml ~/dotfiles/starship/starship.toml
 # setup symbolic links
 ln -s ~/dotfiles/cava/ ~/.config/
 ln -s ~/dotfiles/cmus/ ~/.config/
+ln -s ~/dotfiles/deadbeef/ ~/.config/
 ln -s ~/dotfiles/lf/ ~/.config/
 ln -s ~/dotfiles/kitty/ ~/.config/
 ln -s ~/dotfiles/neofetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
 ln -s ~/dotfiles/.zshrc ~
 
-# remove symbolic links
+# remove unwanted folders
 rm -rf ~/dotfiles/alacritty
 rm -rf ~/dotfiles/login
 rm -rf ~/dotfiles/picom
@@ -60,6 +56,19 @@ if [ ! -d "$APPFOLD" ]; then
 	mkdir -p $APPFOLD
 fi
 
+THEMEFOLD=~/.local/share/themes
+if [ ! -d "$THEMEFOLD" ]; then
+	mkdir -p $THEMEFOLD
+fi
+
+LIBFOLD=~/.local/lib/deadbeef
+if [ ! -d "$LIBFOLD" ]; then
+	mkdir -p $LIBFOLD
+fi
+
+#copy deadbeef plugins
+cp deadbeef/*.* ~.local/share/applications
+
 # copy custom application files
 cp applications/cmus.desktop ~.local/share/applications
 
@@ -79,13 +88,6 @@ xfconf-query -c xsettings -p /Net/IconThemeName -s "Miya-black-dark"
 gsettings set org.gnome.desktop.interface gtk-theme "Tokyonight-Dark-B" 
 gsettings set org.gnome.desktop.interface icon-theme "Miya-black-dark" 
 gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors 
-
-#flatpak fix
-sudo flatpak override --filesystem=$HOME/.local/share/themes
-sudo flatpak override --filesystem=$HOME/.local/share/icons
-sudo flatpak override --env=GTK_THEME="Tokyonight-Dark-B"
-sudo flatpak override --env=ICON_THEME="Miya-black-dark"
-flatpak uninstall --unused && flatpak repair
 
 #grub theme
 sudo cp -r darkmatter /boot/grub/themes/
@@ -119,6 +121,9 @@ cp -f dotfiles/updates.sh ~/dotfiles/scripts/
 cp -f dotfiles/installupdates.sh ~/dotfiles/scripts/
 cp -f dotfiles/config-power.rasi ~/dotfiles/rofi/
 
+# copy my scripts
+cp dotfiles/scripts/setup-ssh.sh ~/dotfiles/scripts/
+
 # Copy Cava weather 
 cp dotfiles/cava.sh ~/dotfiles/hypr/scripts/
 cp dotfiles/weather-get.sh ~/dotfiles/hypr/scripts/
@@ -132,20 +137,32 @@ cp dotfiles/3440x1440@144.conf ~/dotfiles/hypr/conf/monitors/
 cp -f dotfiles/keyboard.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/monitor.conf ~/dotfiles/hypr/conf/
+cp -f dotfiles/browser.sh ~/dotfiles/.settings/
+cp -f dotfiles/kitty.sh ~/dotfiles/.settings/
+
+# remove unwanted scripts
+rm ~/dotfiles/scripts/cleanup.sh #in alias already
+rm ~/dotfiles/scripts/figlet.sh 
+rm ~/dotfiles/scripts/filemanager.sh 
+rm ~/dotfiles/scripts/growthrate.py
+rm ~/dotfiles/scripts/launchvm.sh
+rm ~/dotfiles/scripts/looking-glass.sh
+rm ~/dotfiles/scripts/onedrive.sh
+rm ~/dotfiles/scripts/snapshot.sh
+rm ~/dotfiles/scripts/templates.sh
 
 #Display manager
 sudo pacman -S greetd
 sudo systemctl enable greetd.service
 
-echo 'GRUB_THEME="/boot/grub/themes/darkmatter/theme.txt"' | sudo tee -a /etc/greetd/config.toml
-
-#not workiong
-echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
-
 cd $HOME
 rm .bash*
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
+
+#not workiong
+echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
+bat /etc/greetd/config.toml
 
 echo "     _                   "
 echo "  __| | ___  _ __   ___  "
