@@ -1,7 +1,7 @@
 #patch for ML4W dotfiles
 
 # remove packages
-sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad python-pip python-psutil python-rich python-click qalculate-gtk man-pages xdg-desktop-portal pfetch trizen pacseek xautolock
+sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad python-pip python-psutil python-rich python-click qalculate-gtk man-pages nm-connection-editor xdg-desktop-portal pfetch trizen pacseek xautolock
 
 # install packages
 sudo pacman -S --noconfirm bat cronie neofetch lf less kitty noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
