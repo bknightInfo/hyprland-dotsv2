@@ -1,13 +1,20 @@
 #patch for ML4W dotfiles
 
 # remove packages
-sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad python-pip python-psutil python-rich python-click qalculate-gtk man-pages xdg-desktop-portal pfetch trizen pacseek wlr-randr xclip xautolock
+sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad python-pip python-psutil python-rich python-click qalculate-gtk man-pages xdg-desktop-portal pfetch trizen pacseek xautolock
 
 # install packages
-sudo pacman -S --noconfirm bat cronie neofetch greetd lf less kitty noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
+sudo pacman -S --noconfirm bat cronie neofetch lf less kitty noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
 
 # aur install
-yay -S --noconfirm brave-bin cava cmus deadbeef fnm-bin grimblast-git ngw-look-bin solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
+yay -S --noconfirm brave-bin cava cmus deadbeef fnm-bin grimblast-git nwg-look-bin solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
+
+#remove .settings files
+rm ~/dotfiles/.settings/browser.sh
+rm ~/dotfiles/.settings/terminal.sh
+rm ~/dotfiles/.settings/filemanager.sh
+rm ~/dotfiles/.settings/software.sh
+rm ~/dotfiles/.settings/networkmanager.sh
 
 # copy dotfiles (cava, kitty, lf, neofetch,starship, zsh)
 cp -r dotfiles/cava ~/dotfiles/
@@ -67,7 +74,7 @@ if [ ! -d "$LIBFOLD" ]; then
 fi
 
 #copy deadbeef plugins
-cp deadbeef/*.* ~.local/share/applications
+cp deadbeef/*.* ~/.local/lib/deadbeef
 
 # copy custom application files
 cp applications/cmus.desktop ~.local/share/applications
@@ -152,7 +159,7 @@ rm ~/dotfiles/scripts/snapshot.sh
 rm ~/dotfiles/scripts/templates.sh
 
 #Display manager
-sudo pacman -S greetd
+sudo pacman -S --noconfirm greetd
 sudo systemctl enable greetd.service
 
 cd $HOME
@@ -170,6 +177,6 @@ echo " / _' |/ _ \| '_ \ / _ \ "
 echo "| (_| | (_) | | | |  __/ "
 echo " \__,_|\___/|_| |_|\___| "
 echo "                         "
-echo  "Remember to check the settings in "
+echo  "Remember to check the settings in /etc/xdg/reflector/reflector.conf"
 echo ""
 echo "Please reboot to start hyprland. Enjoy"
