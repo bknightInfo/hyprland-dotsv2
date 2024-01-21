@@ -4,10 +4,10 @@
 sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad python-pip python-psutil python-rich python-click qalculate-gtk man-pages nm-connection-editor xdg-desktop-portal pfetch trizen pacseek xautolock
 
 # install packages
-sudo pacman -S --noconfirm bat cronie neofetch lf less kitty noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
+sudo pacman -S --noconfirm bat cronie neofetch lf less kitty ripgrep noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
 
 # aur install
-yay -S --noconfirm brave-bin cava cmus deadbeef fnm-bin grimblast-git nwg-look-bin solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
+yay -S --noconfirm brave-bin cava-git cmus deadbeef fnm-bin grimblast-git solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
 
 #remove .settings files
 rm ~/dotfiles/.settings/browser.sh
@@ -16,6 +16,18 @@ rm ~/dotfiles/.settings/filemanager.sh
 rm ~/dotfiles/.settings/software.sh
 rm ~/dotfiles/.settings/networkmanager.sh
 
+#remove scripts
+rm ~/dotfiles/scripts/autolock.sh
+rm ~/dotfiles/scripts/bravebookmarks.sh
+rm ~/dotfiles/scripts/calculator.sh
+rm ~/dotfiles/scripts/checkplatform.sh
+rm ~/dotfiles/scripts/fontsearch.sh
+rm ~/dotfiles/hypr/scripts/disabledm.sh
+rm ~/dotfiles/hypr/scripts/screenshot.sh
+
+# Removes neovim config
+rm -rf ~/dotfiles/nvim ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim mv ~/.cache/nvim
+
 # copy dotfiles (cava, kitty, lf, neofetch,starship, zsh)
 cp -r dotfiles/cava ~/dotfiles/
 cp -r dotfiles/cmus ~/dotfiles/
@@ -23,6 +35,7 @@ cp -r dotfiles/deadbeef ~/dotfiles/
 cp -r dotfiles/lf ~/dotfiles/
 cp -r dotfiles/kitty ~/dotfiles/
 cp -r dotfiles/neofetch ~/dotfiles/
+cp -r dotfiles/nvim ~/dotfiles/
 cp dotfiles/.zshrc ~/dotfiles/
 cp -r dotfiles/zsh ~/dotfiles/
 cp -f dotfiles/starship.toml ~/dotfiles/starship/starship.toml
@@ -46,6 +59,7 @@ rm -rf ~/dotfiles/qtile
 rm -rf ~/dotfiles/screenshots
 rm -rf ~/dotfiles/sddm
 rm -rf ~/dotfiles/vim
+rm -rf ~/dotfiles/wlogout
 
 # settings
 sudo sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
@@ -167,8 +181,9 @@ rm .bash*
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 
-#not workiong
+#not working
 echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
+#check if everything is ok
 bat /etc/greetd/config.toml
 
 echo "     _                   "
