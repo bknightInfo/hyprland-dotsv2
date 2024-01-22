@@ -29,6 +29,7 @@ rm ~/dotfiles/hypr/scripts/screenshot.sh
 rm -rf ~/dotfiles/nvim ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim mv ~/.cache/nvim
 
 # copy dotfiles (cava, kitty, lf, neofetch,starship, zsh)
+cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
 cp -r dotfiles/cava ~/dotfiles/
 cp -r dotfiles/cmus ~/dotfiles/
 cp -r dotfiles/deadbeef ~/dotfiles/
