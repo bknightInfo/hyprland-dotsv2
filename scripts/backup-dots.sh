@@ -9,6 +9,7 @@ figlet "Dot Backup"
 echo -e "${NONE}"
 
 # Neovim
+rm -rf ~/Downloads/hyprland-dotsv2/dotfiles/nvim
 cp -rf ~/dotfiles/nvim/ ~/Downloads/hyprland-dotsv2/dotfiles/
 
 echo "backup completed"

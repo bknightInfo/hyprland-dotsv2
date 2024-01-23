@@ -1,13 +1,30 @@
 #patch for ML4W dotfiles
+source .install/functions.sh
+source .install/packages.sh
 
-# remove packages
-sudo pacman -Rcns --noconfirm vim chromium mpv freerdp mousepad python-pip python-psutil python-rich python-click qalculate-gtk man-pages nm-connection-editor xdg-desktop-portal pfetch trizen pacseek xautolock
+#colors
+COK="[\e[1;32mOK\e[0m]"
+CER="[\e[1;31mERROR\e[0m]"
 
-# install packages
-sudo pacman -S --noconfirm bat cronie neofetch lf less kitty ripgrep noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono reflector xfce4-settings zsh zsh-completions zsh-syntax-highlighting
+INSTLOG="postinstall-$(date +%d-%H%M%S).log"
 
-# aur install
-yay -S --noconfirm brave-bin cava-git cmus deadbeef fnm-bin grimblast-git solaar zsh-autocomplete-git paru-bin visual-studio-code-bin
+# clean up files
+echo -e "$CNT - removing unwanted applications"
+for SOFTWR in ${remove_stage[@]}; do
+	remove_software $SOFTWR
+done
+
+# Stage 1 - main components
+echo -e "$CNT - Installing main components, this may take a while..."
+for SOFTWR in ${install_stage[@]}; do
+	install_software "pacman" $SOFTWR
+done
+
+# Stage AUR - AUR applications
+echo -e "$CNT - Installing AUR system tools, this may take a while..."
+for SOFTWR in ${aur_stage[@]}; do
+	install_software 'yay' $SOFTWR
+done
 
 #remove .settings files
 rm ~/dotfiles/.settings/browser.sh
@@ -179,6 +196,7 @@ sudo systemctl enable greetd.service
 
 cd $HOME
 rm .bash*
+
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 
