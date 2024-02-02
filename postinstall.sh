@@ -50,23 +50,24 @@ cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
 cp -r dotfiles/cava ~/dotfiles/
 cp -r dotfiles/cmus ~/dotfiles/
 cp -r dotfiles/deadbeef ~/dotfiles/
+cp -r dotfiles/foot ~/dotfiles/
 cp -r dotfiles/lf ~/dotfiles/
-cp -r dotfiles/kitty ~/dotfiles/
 cp -r dotfiles/neofetch ~/dotfiles/
 cp -r dotfiles/nvim ~/dotfiles/
 cp dotfiles/.zshrc ~/dotfiles/
 cp -r dotfiles/zsh ~/dotfiles/
+cp -r dotfiles/yazi ~/dotfiles/
 cp -f dotfiles/starship.toml ~/dotfiles/starship/starship.toml
 
 # setup symbolic links
 ln -s ~/dotfiles/cava/ ~/.config/
 ln -s ~/dotfiles/cmus/ ~/.config/
 ln -s ~/dotfiles/deadbeef/ ~/.config/
-ln -s ~/dotfiles/lf/ ~/.config/
-ln -s ~/dotfiles/kitty/ ~/.config/
+ln -s ~/dotfiles/foot/ ~/.config/
 ln -s ~/dotfiles/neofetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
 ln -s ~/dotfiles/.zshrc ~
+ln -s ~/dotfiles/yazi/ ~/.config/
 
 # remove unwanted folders
 rm -rf ~/dotfiles/alacritty
@@ -109,7 +110,7 @@ fi
 cp deadbeef/*.* ~/.local/lib/deadbeef
 
 # copy custom application files
-cp applications/cmus.desktop ~.local/share/applications
+cp applications/*.desktop ~/.local/share/applications/
 
 #themes
 git clone https://github.com/yeyushengfan258/Miya-icon-theme.git
@@ -177,7 +178,6 @@ cp -f dotfiles/keyboard.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/monitor.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/browser.sh ~/dotfiles/.settings/
-cp -f dotfiles/kitty.sh ~/dotfiles/.settings/
 
 # remove unwanted scripts
 rm ~/dotfiles/scripts/cleanup.sh #in alias already
@@ -193,9 +193,6 @@ rm ~/dotfiles/scripts/templates.sh
 #Display manager
 sudo pacman -S --noconfirm greetd
 sudo systemctl enable greetd.service
-
-cd $HOME
-rm .bash*
 
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)

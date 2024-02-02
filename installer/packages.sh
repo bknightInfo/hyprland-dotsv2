@@ -1,21 +1,29 @@
 pacman_stage=(
     bat 
     cronie 
-    neofetch 
-    lf 
-    less 
-    kitty 
+    foot
+    fd
+    ffmpegthumbnailer 
+    fzf
+    less  
+    jq
     ripgrep 
+    neofetch 
     noto-fonts 
     noto-fonts-cjk 
     noto-fonts-emoji 
+    poppler
     ttf-jetbrains-mono 
     reflector 
+    unarchiver
     xfce4-settings 
+    yazi
+    zoxide
     zsh 
     zsh-completions 
     zsh-syntax-highlighting
-)
+)     
+
 
 aur_stage=(
     brave-bin 

@@ -12,4 +12,7 @@ echo -e "${NONE}"
 rm -rf ~/Downloads/hyprland-dotsv2/dotfiles/nvim
 cp -rf ~/dotfiles/nvim/ ~/Downloads/hyprland-dotsv2/dotfiles/
 
+# zsh
+cp -rf ~/dotfiles/zsh/ ~/Downloads/hyprland-dotsv2/dotfiles/
+
 echo "backup completed"

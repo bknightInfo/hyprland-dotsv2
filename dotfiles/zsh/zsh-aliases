@@ -100,3 +100,5 @@ alias lapps='cd ~/.local/share/applications'
 alias v="nvim"
 alias vim="nvim"
 
+# short cut for yazi file manager
+alias lf="yazi"
