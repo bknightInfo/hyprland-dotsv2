@@ -197,6 +197,9 @@ sudo systemctl enable greetd.service
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 
+# runs foot server
+echo '\n# Terminal Daemon\nexec-once = foot -s' | tee -a ~/dotfiles/hypr/conf/autostart.conf
+
 #not working
 echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
 #check if everything is ok
