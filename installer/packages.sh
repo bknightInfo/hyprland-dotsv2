@@ -22,6 +22,7 @@ pacman_stage=(
     zsh 
     zsh-completions 
     zsh-syntax-highlighting
+    docker-compose 
 )     
 
 
@@ -36,6 +37,7 @@ aur_stage=(
     zsh-autocomplete-git 
     paru-bin 
     visual-studio-code-bin
+    docker-desktop 
 )
 
 remove_stage=(

@@ -102,3 +102,7 @@ alias vim="nvim"
 
 # short cut for yazi file manager
 alias lf="yazi"
+
+# docker
+alias docker-start="systemctl --user start docker-desktop"
+alias docker-stop="systemctl --user stop docker-desktop"

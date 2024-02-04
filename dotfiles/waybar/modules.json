@@ -63,7 +63,7 @@
         "return-type": "json",       
         "exec": "~/dotfiles/scripts/updates.sh",
         "restart-interval": 60,
-        "on-click": "kitty -e paru -Syu",
+        "on-click": "foot -e paru -Syu",
         "tooltip": false
     },
     
