@@ -1,6 +1,6 @@
 #patch for ML4W dotfiles
-source .install/functions.sh
-source .install/packages.sh
+source installer/functions.sh
+source installer/packages.sh
 
 #colors
 COK="[\e[1;32mOK\e[0m]"
