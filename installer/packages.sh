@@ -29,7 +29,6 @@ pacman_stage=(
 aur_stage=(
     brave-bin 
     cava-git 
-    cmus 
     deadbeef 
     fnm-bin 
     grimblast-git 
@@ -50,13 +49,11 @@ remove_stage=(
     python-psutil 
     python-rich 
     python-click 
-    qalculate-gtk 
     man-pages 
     nm-connection-editor 
     xdg-desktop-portal 
     pfetch 
     trizen 
     pacseek 
-    xautolock
 )
 
