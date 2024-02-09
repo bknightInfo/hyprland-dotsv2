@@ -48,7 +48,7 @@ zsh_add_completion "esc/conda-zsh-completion" false
 
 # Environment variables set everywhere
 export EDITOR="nvim"
-export TERMINAL="footclient"
+export TERMINAL="kitty"
 export BROWSER="brave"
 
 # For QT Themes

@@ -10,26 +10,17 @@ INSTLOG="postinstall-$(date +%d-%H%M%S).log"
 
 # clean up files
 echo -e "$CNT - removing unwanted applications"
-for SOFTWR in ${remove_stage[@]}; do
-	remove_software $SOFTWR
-done
+_removePackagesPacman "${removePacman[@]}";
 
 # Stage 1 - main components
 echo -e "$CNT - Installing main components, this may take a while..."
-for SOFTWR in ${install_stage[@]}; do
-	install_software "pacman" $SOFTWR
-done
+_installPackagesPacman "${packagesPacman[@]}";
 
 # Stage AUR - AUR applications
 echo -e "$CNT - Installing AUR system tools, this may take a while..."
-for SOFTWR in ${aur_stage[@]}; do
-	install_software 'yay' $SOFTWR
-done
+_installPackagesYay "${packagesYay[@]}";
 
 #remove .settings files
-rm ~/dotfiles/.settings/browser.sh
-rm ~/dotfiles/.settings/terminal.sh
-rm ~/dotfiles/.settings/filemanager.sh
 rm ~/dotfiles/.settings/software.sh
 rm ~/dotfiles/.settings/networkmanager.sh
 
@@ -48,22 +39,19 @@ rm -rf ~/dotfiles/nvim ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim mv
 # copy dotfiles (cava, neofetch,starship, zsh)
 cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
 cp -r dotfiles/cava ~/dotfiles/
-cp -r dotfiles/cmus ~/dotfiles/
 cp -r dotfiles/deadbeef ~/dotfiles/
-cp -r dotfiles/foot ~/dotfiles/
-cp -r dotfiles/lf ~/dotfiles/
+cp -r dotfiles/kitty ~/dotfiles/
 cp -r dotfiles/neofetch ~/dotfiles/
 cp -r dotfiles/nvim ~/dotfiles/
-cp dotfiles/.zshrc ~/dotfiles/
+cp -r dotfiles/.zshrc ~/dotfiles/
 cp -r dotfiles/zsh ~/dotfiles/
 cp -r dotfiles/yazi ~/dotfiles/
 cp -f dotfiles/starship.toml ~/dotfiles/starship/starship.toml
 
 # setup symbolic links
 ln -s ~/dotfiles/cava/ ~/.config/
-ln -s ~/dotfiles/cmus/ ~/.config/
 ln -s ~/dotfiles/deadbeef/ ~/.config/
-ln -s ~/dotfiles/foot/ ~/.config/
+ln -s ~/dotfiles/kitty/ ~/.config/
 ln -s ~/dotfiles/neofetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
 ln -s ~/dotfiles/.zshrc ~
@@ -156,7 +144,7 @@ sudo systemctl enable reflector.timer
 sudo systemctl enable fstrim.timer
 
 # Copy power scripts
-cp dotfiles/power.sh ~/dotfiles/scripts/
+cp -f dotfiles/power.sh ~/dotfiles/scripts/
 cp -f dotfiles/updates.sh ~/dotfiles/scripts/
 cp -f dotfiles/installupdates.sh ~/dotfiles/scripts/
 cp -f dotfiles/config-power.rasi ~/dotfiles/rofi/
@@ -172,8 +160,8 @@ cp dotfiles/weather-get.sh ~/dotfiles/hypr/scripts/
 cp -f wallpaper/*.* ~/wallpaper/
 
 # override settings from dotfiles
-cp dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
-cp dotfiles/3440x1440@144.conf ~/dotfiles/hypr/conf/monitors/
+cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
+cp -f dotfiles/3440x1440@144.conf ~/dotfiles/hypr/conf/monitors/
 cp -f dotfiles/keyboard.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/monitor.conf ~/dotfiles/hypr/conf/
