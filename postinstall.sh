@@ -56,6 +56,7 @@ ln -s ~/dotfiles/neofetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
 ln -s ~/dotfiles/.zshrc ~
 ln -s ~/dotfiles/yazi/ ~/.config/
+ln -s ~/dotfiles/nvim/ ~/.config/
 
 # remove unwanted folders
 rm -rf ~/dotfiles/alacritty
@@ -67,6 +68,11 @@ rm -rf ~/dotfiles/screenshots
 rm -rf ~/dotfiles/sddm
 rm -rf ~/dotfiles/vim
 rm -rf ~/dotfiles/wlogout
+
+# remove orphan links
+rm ~/.config/alacritty
+rm ~/.config/vim
+rm ~/.config/wlogout
 
 # settings
 sudo sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
@@ -163,9 +169,11 @@ cp -f wallpaper/*.* ~/wallpaper/
 cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
 cp -f dotfiles/3440x1440@144.conf ~/dotfiles/hypr/conf/monitors/
 cp -f dotfiles/keyboard.conf ~/dotfiles/hypr/conf/
-cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/monitor.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/browser.sh ~/dotfiles/.settings/
+
+# change keybindings
+echo "source = ~/dotfiles/hypr/conf/keybindings/keybindings.conf" > ~/dotfiles/hypr/conf/keybinding.conf
 
 # remove unwanted scripts
 rm ~/dotfiles/scripts/cleanup.sh #in alias already

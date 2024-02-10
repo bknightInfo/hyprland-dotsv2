@@ -21,6 +21,7 @@ removePacman=(
     fuse2 
     papirus-icon-theme 
     breeze-icons
+    wlogout
 )
 
 
