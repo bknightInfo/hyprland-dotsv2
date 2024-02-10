@@ -15,11 +15,6 @@
     "layer": "top",
     "margin-top": 14,
     "margin-bottom": 0,
-
-    // Position BOTTOM
-    // "position": "bottom",
-    // "margin-top": 0,
-    // "margin-bottom": 14,
     
     "layer": "top",
     "margin-left": 0,
@@ -27,38 +22,31 @@
     "spacing": 0,
 
     // Load Modules
-    "include": ["~/dotfiles/waybar/modules.json"],
+    "include": ["~/dotfiles/waybar/themes/custom/modules.json"],
 
     // Modules Left
     "modules-left": [
         "custom/appmenu",
-        "custom/settings",
-        "custom/waybarthemes",
-        "custom/wallpaper",
-        // START TASK TOOGLE
+        "group/settings",
         "wlr/taskbar",
-        // END TASK TOOGLE
         "hyprland/window"
     ],
 
     // Modules Center
     "modules-center": [
-        "hyprland/workspaces",
-        "custom/cava"
+        "hyprland/workspaces"
     ],
 
     // Modules Right    
     "modules-right": [
         "custom/updates",
         "pulseaudio",
+        "custom/cava",
+        "custom/weather",
         "bluetooth",
         "group/hardware",
         "custom/cliphist",
-        "idle_inhibitor",
-        // START TRAY TOOGLE
         "tray",
-        // END TRAY TOOGLE
-        "custom/weather",
         "clock",
         "custom/exit"
     ]

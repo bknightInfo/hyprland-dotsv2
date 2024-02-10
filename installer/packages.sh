@@ -28,7 +28,7 @@ removePacman=(
 packagesPacman=(
     bat 
     cronie 
-    kitty 
+    kitty
     fd 
     ffmpegthumbnailer 
     fzf 
@@ -47,6 +47,7 @@ packagesPacman=(
     zsh-completions 
     zsh-syntax-highlighting 
     docker-compose 
+    vivaldi
 )    
 
 packagesYay=(

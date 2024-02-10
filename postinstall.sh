@@ -36,6 +36,9 @@ rm ~/dotfiles/hypr/scripts/screenshot.sh
 # Removes neovim config
 rm -rf ~/dotfiles/nvim ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim mv ~/.cache/nvim
 
+# Removes the app images
+rm -rf ~/dotfiles/apps 
+
 # copy dotfiles (cava, neofetch,starship, zsh)
 cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
 cp -r dotfiles/cava ~/dotfiles/
@@ -139,9 +142,7 @@ sudo cat <<EOF | crontab -
 30 0 * * 7 sh ~/.local/share/bin/autobackup.sh 
 EOF
 
-# Enable the Bluetooth service
-echo -e "$CNT - Activating Bluetooth Services...\n"
-sudo systemctl enable --now bluetooth.service
+# Enable the Bluetooth servicetem
 sleep 2
 
 # Enable the reflector mirror update
@@ -165,7 +166,7 @@ cp dotfiles/weather-get.sh ~/dotfiles/hypr/scripts/
 # Copy wallpapers
 cp -f wallpaper/*.* ~/wallpaper/
 
-# override settings from dotfiles
+# override settings from dotfilestem
 cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
 cp -f dotfiles/3440x1440@144.conf ~/dotfiles/hypr/conf/monitors/
 cp -f dotfiles/keyboard.conf ~/dotfiles/hypr/conf/
@@ -186,15 +187,20 @@ rm ~/dotfiles/scripts/onedrive.sh
 rm ~/dotfiles/scripts/snapshot.sh
 rm ~/dotfiles/scripts/templates.sh
 
+# Write default applications 
+echo "kitty" > ~/dotfiles/.settings/terminal.sh
+echo "brave" > ~/dotfiles/.settings/browser.sh
+
+# Copy my custom waybar config
+cp -r themes/custom ~/dotfiles/waybar/themes
+echo "/custom;/custom/light" > ~/.cache/.themestyle.sh
+
 #Display manager
 sudo pacman -S --noconfirm greetd
 sudo systemctl enable greetd.service
 
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
-
-# runs foot server
-echo '\n# Terminal Daemon\nexec-once = foot -s' | tee -a ~/dotfiles/hypr/conf/autostart.conf
 
 #not working
 echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml

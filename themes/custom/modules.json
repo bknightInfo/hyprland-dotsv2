@@ -58,6 +58,13 @@
         "separate-outputs": true
     },
 
+    // ML4W Welcome App
+    "custom/ml4w-welcome": {
+        "on-click": "~/dotfiles/apps/ML4W_Welcome-x86_64.AppImage",
+        "format": " ",
+        "tooltip": false
+    },
+
     // Youtube Subscriber Count
     "custom/youtube": {
         "format": " {}",
@@ -84,7 +91,7 @@
         "return-type": "json",       
         "exec": "~/dotfiles/scripts/updates.sh",
         "restart-interval": 60,
-        "on-click": "footclient -e ~/dotfiles/scripts/installupdates.sh",
+        "on-click": "kitty -e ~/dotfiles/scripts/installupdates.sh",
         "on-click-right": "~/dotfiles/.settings/software.sh",
         "tooltip": false
     },
@@ -107,7 +114,7 @@
     // Settings
     "custom/settings": {
         "format": "",
-        "on-click": "footclient --class dotfiles-floating -e ~/dotfiles/hypr/start-settings.sh",
+        "on-click": "kitty --class dotfiles-floating -e ~/dotfiles/hypr/start-settings.sh",
         "tooltip": false
     },
 
@@ -120,7 +127,7 @@
 
     // Filemanager Launcher
     "custom/filemanager": {
-        "format": "",
+        "format": "",
         "on-click": "~/dotfiles/.settings/filemanager.sh",
         "tooltip": false
     },
@@ -141,15 +148,15 @@
 
     // Browser Launcher
     "custom/browser": {
-        "format": "",
+        "format": "",
         "on-click": "~/dotfiles/.settings/browser.sh",
         "tooltip": false
     },    
 
     // ChatGPT Launcher
     "custom/chatgpt": {
-        "format": "",
-        "on-click": "chromium --app=https://chat.openai.com",
+        "format": " ",
+        "on-click": "vivaldi --app=https://chat.openai.com",
         "tooltip": false
     },
 
@@ -169,12 +176,22 @@
 
     // Rofi Application Launcher
     "custom/appmenu": {
+        // START APPS LABEL
         "format": " ",
+        // END APPS LABEL
         "on-click": "rofi -show drun -replace",
         "on-click-right": "~/dotfiles/hypr/scripts/keybindings.sh",
         "tooltip": false
     },
-    
+
+    // Rofi Application Launcher
+    "custom/appmenuicon": {
+        "format": "",
+        "on-click": "rofi -show drun -replace",
+        "on-click-right": "~/dotfiles/hypr/scripts/keybindings.sh",
+        "tooltip": false
+    },    
+
     // Power Menu
     "custom/exit": {
         "format": "",
@@ -217,13 +234,13 @@
     // CPU
     "cpu": {
         "format": "/ C {usage}% ",
-        "on-click": "footclient -e htop"
+        "on-click": "kitty -e htop"
     },
 
     // Memory
     "memory": {
         "format": "/ M {}% ",
-        "on-click": "footclient -e htop"
+        "on-click": "kitty -e htop"
     },
 
     // Harddisc space used
@@ -231,7 +248,7 @@
         "interval": 30,
         "format": "D {percentage_used}% ",
         "path": "/",
-        "on-click": "footclient -e htop"
+        "on-click": "kitty -e htop"
     }, 
 
     "hyprland/language": {
@@ -257,13 +274,11 @@
     
     // Group Settings
     "group/settings": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-memory",
-            "transition-left-to-right": false
-        },        
+        "orientation": "horizontal",
         "modules": [
+            // START CHATGPT TOOGLE
+            "custom/chatgpt",
+            // END CHATGPT TOOGLE
             "custom/settings",
             "custom/waybarthemes",
             "custom/wallpaper"
@@ -274,8 +289,8 @@
     "group/quicklinks": {
         "orientation": "horizontal",
         "modules": [
+            "custom/browser",
             "custom/filemanager",
-            "custom/browser"
          ]
     },
 
@@ -343,16 +358,18 @@
     "user": {
         "format": "{user}",
         "interval": 60,
-        "icon": false
+        "icon": false,
     },
 
+    // Idle Inhibator
     "idle_inhibitor": {
         "format": "{icon}",
-        "tooltip": false,
+        "tooltip": true,
         "format-icons":{
-            "activated": "Auto lock OFF",
-            "deactivated": "ON"
-        }
+            "activated": "",
+            "deactivated": ""
+        },
+        "on-click-right": "swaylock"        
     },
 
     // My custom modules
@@ -373,4 +390,5 @@
         "exec": "~/.config/hypr/scripts/weather-get.sh",
         "exec-if": "ping wttr.in -c1"
     }
+
 }
