@@ -1,3 +1,4 @@
+# List of packages to uninstall
 removePacman=(
     alacritty 
     vim 
@@ -24,7 +25,6 @@ removePacman=(
     wlogout
 )
 
-
 packagesPacman=(
     bat 
     cronie 
@@ -34,10 +34,15 @@ packagesPacman=(
     fzf 
     less 
     jq 
+    thunar-volman 
+    thunar-archive-plugin
     ripgrep 
     neofetch 
+    noto-fonts-cjk 
+    noto-fonts-emoji 
     poppler 
-    ttf-jetbrains-mono 
+    ttf-jetbrains-mono
+    ttf-jetbrains-mono-nerd 
     reflector 
     unarchiver 
     xfce4-settings 
@@ -47,13 +52,13 @@ packagesPacman=(
     zsh-completions 
     zsh-syntax-highlighting 
     docker-compose 
-    vivaldi
+    gst-plugins-good 
+    lollypop
 )    
 
 packagesYay=(
     brave-bin 
-    cava-git 
-    deadbeef 
+    cava-git  
     fnm-bin 
     grimblast-git 
     solaar 

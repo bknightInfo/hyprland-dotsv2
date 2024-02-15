@@ -277,7 +277,7 @@
         "orientation": "horizontal",
         "modules": [
             // START CHATGPT TOOGLE
-            "custom/chatgpt",
+            //"custom/chatgpt",
             // END CHATGPT TOOGLE
             "custom/settings",
             "custom/waybarthemes",
@@ -377,6 +377,7 @@
         "exec": "sh ~/.config/hypr/scripts/cava.sh",
         "format": "{}",
         "tooltip": false,
+        "on-click": "kitty -e cava",
         "layer": "below",
         "output": "all"
     },

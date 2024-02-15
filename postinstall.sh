@@ -1,10 +1,22 @@
 #patch for ML4W dotfiles
+#patch ment for https://gitlab.com/stephan-raabe/dotfiles by Stephan Raabe
+
 source installer/functions.sh
 source installer/packages.sh
 
 #colors
 COK="[\e[1;32mOK\e[0m]"
 CER="[\e[1;31mERROR\e[0m]"
+
+# Set some colors for output messages -- future work
+# OK="$(tput setaf 2)[OK]$(tput sgr0)"
+# ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
+# NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
+# WARN="$(tput setaf 166)[WARN]$(tput sgr0)"
+# CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
+# ORANGE=$(tput setaf 166)
+# YELLOW=$(tput setaf 3)
+# RESET=$(tput sgr0)
 
 INSTLOG="postinstall-$(date +%d-%H%M%S).log"
 
@@ -19,6 +31,7 @@ _installPackagesPacman "${packagesPacman[@]}";
 # Stage AUR - AUR applications
 echo -e "$CNT - Installing AUR system tools, this may take a while..."
 _installPackagesYay "${packagesYay[@]}";
+
 
 #remove .settings files
 rm ~/dotfiles/.settings/software.sh
@@ -41,8 +54,9 @@ rm -rf ~/dotfiles/apps
 
 # copy dotfiles (cava, neofetch,starship, zsh)
 cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
+cp -r scipts/laravel-fix.sh ~/dotfiles/scripts/
+cp -r scipts/wallpaper.sh ~/dotfiles/hypr/scripts/
 cp -r dotfiles/cava ~/dotfiles/
-cp -r dotfiles/deadbeef ~/dotfiles/
 cp -r dotfiles/kitty ~/dotfiles/
 cp -r dotfiles/neofetch ~/dotfiles/
 cp -r dotfiles/nvim ~/dotfiles/
@@ -53,7 +67,6 @@ cp -f dotfiles/starship.toml ~/dotfiles/starship/starship.toml
 
 # setup symbolic links
 ln -s ~/dotfiles/cava/ ~/.config/
-ln -s ~/dotfiles/deadbeef/ ~/.config/
 ln -s ~/dotfiles/kitty/ ~/.config/
 ln -s ~/dotfiles/neofetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
@@ -80,6 +93,7 @@ rm ~/.config/wlogout
 # settings
 sudo sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
+sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
 sudo sed -i '/^ParallelDownloads = .*/a ILoveCandy' /etc/pacman.conf
 
 #create folders
@@ -97,14 +111,6 @@ THEMEFOLD=~/.local/share/themes
 if [ ! -d "$THEMEFOLD" ]; then
 	mkdir -p $THEMEFOLD
 fi
-
-LIBFOLD=~/.local/lib/deadbeef
-if [ ! -d "$LIBFOLD" ]; then
-	mkdir -p $LIBFOLD
-fi
-
-#copy deadbeef plugins
-cp deadbeef/*.* ~/.local/lib/deadbeef
 
 # copy custom application files
 cp applications/*.desktop ~/.local/share/applications/
@@ -163,8 +169,13 @@ cp dotfiles/scripts/setup-ssh.sh ~/dotfiles/scripts/
 cp dotfiles/cava.sh ~/dotfiles/hypr/scripts/
 cp dotfiles/weather-get.sh ~/dotfiles/hypr/scripts/
 
-# Copy wallpapers
-cp -f wallpaper/*.* ~/wallpaper/
+# New wallpapers
+rm -rf ~/wallpaper/
+cp -f wallpaper/*.* ~/Pictures/Wallpapers
+
+# Cache file for holding the current wallpaper
+echo "* { current-image: url(\"$HOME/Pictures/Wallpapers/default.jpg\", height); }" > $HOME/.cache/current_wallpaper.rasi
+echo "$HOME/Pictures/Wallpapers/default.jpg" > $HOME/.cache/current_wallpaper
 
 # override settings from dotfilestem
 cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
@@ -199,11 +210,16 @@ echo "/custom;/custom/light" > ~/.cache/.themestyle.sh
 sudo pacman -S --noconfirm greetd
 sudo systemctl enable greetd.service
 
+#remove yay
+sudo pacman -Rcns yay-git
+
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 
-#not working
+#needs testign
+zsh
 echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
+
 #check if everything is ok
 bat /etc/greetd/config.toml
 
