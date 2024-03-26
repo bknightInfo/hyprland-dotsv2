@@ -1,6 +1,6 @@
 # List of packages to uninstall
 removePacman=(
-    alacritty 
+    alacritty  
     vim 
     gvim 
     chromium 
@@ -23,6 +23,9 @@ removePacman=(
     papirus-icon-theme 
     breeze-icons
     wlogout
+    guvcview 
+    imagemagick
+    qalculate-gtk
 )
 
 packagesPacman=(
@@ -54,6 +57,7 @@ packagesPacman=(
     docker-compose 
     gst-plugins-good 
     lollypop
+    qt5-wayland
 )    
 
 packagesYay=(

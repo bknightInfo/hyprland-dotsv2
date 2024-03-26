@@ -32,11 +32,6 @@ _installPackagesPacman "${packagesPacman[@]}";
 echo -e "$CNT - Installing AUR system tools, this may take a while..."
 _installPackagesYay "${packagesYay[@]}";
 
-
-#remove .settings files
-rm ~/dotfiles/.settings/software.sh
-rm ~/dotfiles/.settings/networkmanager.sh
-
 #remove scripts
 rm ~/dotfiles/scripts/autolock.sh
 rm ~/dotfiles/scripts/bravebookmarks.sh
@@ -57,6 +52,7 @@ cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
 cp -r scipts/laravel-fix.sh ~/dotfiles/scripts/
 cp -r scipts/wallpaper.sh ~/dotfiles/hypr/scripts/
 cp -r dotfiles/cava ~/dotfiles/
+cp -r dotfiles/cmus ~/dotfiles/
 cp -r dotfiles/kitty ~/dotfiles/
 cp -r dotfiles/neofetch ~/dotfiles/
 cp -r dotfiles/nvim ~/dotfiles/
@@ -67,6 +63,7 @@ cp -f dotfiles/starship.toml ~/dotfiles/starship/starship.toml
 
 # setup symbolic links
 ln -s ~/dotfiles/cava/ ~/.config/
+ln -s ~/dotfiles/cmus/ ~/.config/
 ln -s ~/dotfiles/kitty/ ~/.config/
 ln -s ~/dotfiles/neofetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
@@ -180,7 +177,6 @@ echo "$HOME/Pictures/Wallpapers/default.jpg" > $HOME/.cache/current_wallpaper
 # override settings from dotfilestem
 cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
 cp -f dotfiles/3440x1440@144.conf ~/dotfiles/hypr/conf/monitors/
-cp -f dotfiles/keyboard.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/monitor.conf ~/dotfiles/hypr/conf/
 cp -f dotfiles/browser.sh ~/dotfiles/.settings/
 
@@ -210,14 +206,14 @@ echo "/custom;/custom/light" > ~/.cache/.themestyle.sh
 sudo pacman -S --noconfirm greetd
 sudo systemctl enable greetd.service
 
-#remove yay
-sudo pacman -Rcns yay-git
-
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 
-#needs testign
-zsh
+# Copy hook.js
+cp -f hook.js ~/dotfiles-version/
+
+#needs testing
+zsh #not working in bash
 echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
 
 #check if everything is ok

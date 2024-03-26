@@ -1,9 +1,44 @@
 # color
-colorscheme onedarkv
+colorscheme tokyo-night
 
 # start in view 3
 set start_view=playlist
 
+# Enable mouse
+set mouse=true
+
+# Enable use of `playerctl` and other standard utilities
+set mpris=true
+
+# Scrobber
+set status_display_program=cmus-status
+
+# Sort order
+set lib_sort=albumartist date album discnumber tracknumber title
+set pl_sort=date albumartist album discnumber tracknumber title
+
+# Play all albums by current artist default
+set aaa_mode=artist
+# Buffer a bunch, which is useful when playing over sshfs
+set buffer_seconds=90
+# Enable replaygain
+set replaygain=album-preferred
+set replaygain_limit=true
+set replaygain_preamp=6
+
+set format_current= %a - %l [%y] - %03n - %t%= %g
+set format_playlist= %-20%A %-20%l %03n %t %= %g %y
+set format_playlist_va= %-20%A %-20%l %03n %t (%a) %= %g %y
+set format_title=%a - %l - %t
+set format_trackwin_album= %l [%y]
+set format_trackwin=   %03n %t%= %g %d
+set format_trackwin_va=   %03n %t (%a)%= %g %d
+# Include year in tree view
+set format_treewin=  %l [%y]
+set format_treewin_artist=%a
+
+# Handy filters
+fset this_year=originaldate=2023
 # up down
 bind -f common g win-top
 bind -f common G win-bottom
@@ -46,13 +81,13 @@ set tree_width_max=30
 # set format_playlist= %-30%t %a %d
 
 # 1
-set format_trackwin= %{title}
+#set format_trackwin= %{title}
 
 # 3
-set format_playlist= %{title} %= %{duration} 
+#set format_playlist= %{title} %= %{duration} 
 
 # Bottom current playing
-set format_current= %{title} - %{artist}
+#set format_current= %{title} - %{artist}
 
 # references:
 # https://linux.die.net/man/1/cmus
