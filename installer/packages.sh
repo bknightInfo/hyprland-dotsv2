@@ -54,7 +54,6 @@ packagesPacman=(
     zsh 
     zsh-completions 
     zsh-syntax-highlighting 
-    docker-compose 
     gst-plugins-good 
     lollypop
     qt5-wayland
@@ -69,5 +68,10 @@ packagesYay=(
     zsh-autocomplete-git 
     paru-bin 
     visual-studio-code-bin 
+    
+)
+
+packagesDev=(
+    docker-compose 
     docker-desktop
 )

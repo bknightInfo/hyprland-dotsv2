@@ -30,13 +30,13 @@ rm -rf ~/dotfiles-versions/$version/sddm
 rm -rf ~/dotfiles-versions/$version/vim
 rm -rf ~/dotfiles-versions/$version/wlogout
 
-# override settings from dotfilestem
+// override settings from dotfilestem
 rm ~/dotfiles-versions/$version/hypr/conf/keybindings/keybindings.conf
 rm ~/dotfiles-versions/$version/hypr/conf/keybinding.conf
 rm ~/dotfiles-versions/$version/hypr/conf/monitor.conf
 rm -rf ~/dotfiles-versions/$version/.settings/
 
-# remove unwanted scripts
+// remove unwanted scripts
 rm ~/dotfiles-versions/$version/scripts/cleanup.sh
 rm ~/dotfiles-versions/$version/scripts/figlet.sh 
 rm ~/dotfiles-versions/$version/scripts/filemanager.sh 
