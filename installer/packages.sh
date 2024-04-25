@@ -55,7 +55,6 @@ packagesPacman=(
     zsh-completions 
     zsh-syntax-highlighting 
     gst-plugins-good 
-    lollypop
     qt5-wayland
 )    
 
@@ -67,8 +66,8 @@ packagesYay=(
     solaar 
     zsh-autocomplete-git 
     paru-bin 
+    wttrbar.git
     visual-studio-code-bin 
-    
 )
 
 packagesDev=(

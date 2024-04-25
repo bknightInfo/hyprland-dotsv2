@@ -216,6 +216,9 @@ cp -f hook.js ~/dotfiles-version/
 zsh #not working in bash
 echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
 
+#libreoffice fix
+echo "\nwindowrulev2 = tile,class:^(libreoffice.*)$" >> ~/dotfiles/hypr/conf/windowrules/default.conf
+
 #check if everything is ok
 bat /etc/greetd/config.toml
 
