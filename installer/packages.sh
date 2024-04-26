@@ -66,7 +66,7 @@ packagesYay=(
     solaar 
     zsh-autocomplete-git 
     paru-bin 
-    wttrbar.git
+    wttrbar
     visual-studio-code-bin 
 )
 
