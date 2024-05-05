@@ -12,9 +12,9 @@ zle_highlight=('paste:none')
 # beeping is annoying
 unsetopt BEEP
 
-#neofetch
+#auto run
 clear
-neofetch
+fastfetch
 
 # completions
 autoload -Uz compinit

@@ -47,14 +47,14 @@ rm -rf ~/dotfiles/nvim ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim mv
 # Removes the app images
 rm -rf ~/dotfiles/apps 
 
-# copy dotfiles (cava, neofetch,starship, zsh)
+# copy dotfiles (cava, fastfetch,starship, zsh)
 cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
 cp -r scipts/laravel-fix.sh ~/dotfiles/scripts/
 cp -r scipts/wallpaper.sh ~/dotfiles/hypr/scripts/
 cp -r dotfiles/cava ~/dotfiles/
 cp -r dotfiles/cmus ~/dotfiles/
 cp -r dotfiles/kitty ~/dotfiles/
-cp -r dotfiles/neofetch ~/dotfiles/
+cp -r dotfiles/fastfetch ~/dotfiles/
 cp -r dotfiles/nvim ~/dotfiles/
 cp -r dotfiles/.zshrc ~/dotfiles/
 cp -r dotfiles/zsh ~/dotfiles/
@@ -65,7 +65,7 @@ cp -f dotfiles/starship.toml ~/dotfiles/starship/starship.toml
 ln -s ~/dotfiles/cava/ ~/.config/
 ln -s ~/dotfiles/cmus/ ~/.config/
 ln -s ~/dotfiles/kitty/ ~/.config/
-ln -s ~/dotfiles/neofetch/ ~/.config/
+ln -s ~/dotfiles/fastfetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
 ln -s ~/dotfiles/.zshrc ~
 ln -s ~/dotfiles/yazi/ ~/.config/
@@ -206,18 +206,21 @@ echo "/custom;/custom/light" > ~/.cache/.themestyle.sh
 sudo pacman -S --noconfirm greetd
 sudo systemctl enable greetd.service
 
-# Cleaning orphan files
-sudo pacman -Rns --noconfirm $(pacman -Qtdq)
-
 # Copy hook.js
 cp -f hook.js ~/dotfiles-version/
+
+#configure bat theme
+mkdir -p "$(bat --config-dir)/themes"
+cd "$(bat --config-dir)/themes"
+# Replace _night in the lines below with _day, _moon, or _storm if needed.
+curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_night.tmTheme
+bat cache --build
+bat --list-themes | grep tokyo # should output "tokyonight_night"
+echo '--theme="tokyonight_night"' >> "$(bat --config-dir)/config"
 
 #needs testing
 zsh #not working in bash
 echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
-
-#libreoffice fix
-echo "\nwindowrulev2 = tile,class:^(libreoffice.*)$" >> ~/dotfiles/hypr/conf/windowrules/default.conf
 
 #check if everything is ok
 bat /etc/greetd/config.toml
@@ -231,3 +234,6 @@ echo "                         "
 echo  "Remember to check the settings in /etc/xdg/reflector/reflector.conf"
 echo ""
 echo "Please reboot to start hyprland. Enjoy"
+
+# Cleaning orphan files
+sudo pacman -Rns --noconfirm $(pacman -Qtdq)
