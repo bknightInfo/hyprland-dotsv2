@@ -382,14 +382,12 @@
         "output": "all"
     },
 
-    "custom/weather": {
-        "format": "{}",
-        "format-alt": "{alt}: {}",
-        "format-alt-click": "click-right",
-        "interval": 1800,
-        "return-type": "json",
-        "exec": "~/.config/hypr/scripts/weather-get.sh",
-        "exec-if": "ping wttr.in -c1"
+    "custom/weather-wttrbar": {
+        "format": "{}°",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "wttrbar --location Geelong --custom-indicator '{ICON} {weatherDesc} {temp_C}'",
+        "return-type": "json"    
     }
 
 }

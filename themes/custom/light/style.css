@@ -19,7 +19,7 @@
  * my custom modules
  * ----------------------------------------------------- */
 
- #custom-weather, #custom-cava {
+ #custom-cava, #custom-weather-wttrbar {
     background-color: @backgroundlight;
     font-size: 16px;
     color: @textcolor2;

@@ -44,9 +44,6 @@ rm ~/dotfiles/hypr/scripts/screenshot.sh
 # Removes neovim config
 rm -rf ~/dotfiles/nvim ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim mv ~/.cache/nvim
 
-# Removes the app images
-rm -rf ~/dotfiles/apps 
-
 # copy dotfiles (cava, fastfetch,starship, zsh)
 cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
 cp -r scipts/laravel-fix.sh ~/dotfiles/scripts/
@@ -55,6 +52,7 @@ cp -r dotfiles/cava ~/dotfiles/
 cp -r dotfiles/cmus ~/dotfiles/
 cp -r dotfiles/kitty ~/dotfiles/
 cp -r dotfiles/fastfetch ~/dotfiles/
+cp -r dotfiles/neofetch ~/dotfiles/
 cp -r dotfiles/nvim ~/dotfiles/
 cp -r dotfiles/.zshrc ~/dotfiles/
 cp -r dotfiles/zsh ~/dotfiles/
@@ -66,6 +64,7 @@ ln -s ~/dotfiles/cava/ ~/.config/
 ln -s ~/dotfiles/cmus/ ~/.config/
 ln -s ~/dotfiles/kitty/ ~/.config/
 ln -s ~/dotfiles/fastfetch/ ~/.config/
+ln -s ~/dotfiles/neofetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
 ln -s ~/dotfiles/.zshrc ~
 ln -s ~/dotfiles/yazi/ ~/.config/
@@ -162,9 +161,8 @@ cp -f dotfiles/config-power.rasi ~/dotfiles/rofi/
 # copy my scripts
 cp dotfiles/scripts/setup-ssh.sh ~/dotfiles/scripts/
 
-# Copy Cava weather 
+# Copy Cava
 cp dotfiles/cava.sh ~/dotfiles/hypr/scripts/
-cp dotfiles/weather-get.sh ~/dotfiles/hypr/scripts/
 
 # New wallpapers
 rm -rf ~/wallpaper/

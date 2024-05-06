@@ -3,8 +3,7 @@ removePacman=(
     alacritty  
     vim 
     gvim 
-    chromium 
-    mpv 
+    chromium
     freerdp 
     mousepad 
     python-pip 
@@ -16,10 +15,7 @@ removePacman=(
     xdg-desktop-portal 
     pfetch 
     trizen 
-    pacseek 
-    gtk4 
-    libadwaita 
-    fuse2 
+    pacseek  
     papirus-icon-theme 
     breeze-icons
     wlogout
@@ -41,6 +37,7 @@ packagesPacman=(
     thunar-archive-plugin
     ripgrep 
     neofetch 
+    fastfetch
     noto-fonts-cjk 
     noto-fonts-emoji 
     poppler 
@@ -50,7 +47,6 @@ packagesPacman=(
     unarchiver 
     xfce4-settings 
     yazi 
-    zoxide 
     zsh 
     zsh-completions 
     zsh-syntax-highlighting 
