@@ -32,10 +32,13 @@ _installPackagesPacman "${packagesPacman[@]}";
 echo -e "$CNT - Installing AUR system tools, this may take a while..."
 _installPackagesYay "${packagesYay[@]}";
 
+# Stage 1 - main components
+echo -e "$CNT - Installing main components, this may take a while..."
+_installPackagesPacman "${emuPacman[@]}";
+
 #remove scripts
 rm ~/dotfiles/scripts/autolock.sh
 rm ~/dotfiles/scripts/bravebookmarks.sh
-rm ~/dotfiles/scripts/calculator.sh
 rm ~/dotfiles/scripts/checkplatform.sh
 rm ~/dotfiles/scripts/fontsearch.sh
 rm ~/dotfiles/hypr/scripts/disabledm.sh
@@ -45,6 +48,7 @@ rm ~/dotfiles/hypr/scripts/screenshot.sh
 rm -rf ~/dotfiles/nvim ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim mv ~/.cache/nvim
 
 # copy dotfiles (cava, fastfetch,starship, zsh)
+cp -r scipts/backup.sh ~/dotfiles/scripts/
 cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
 cp -r scipts/laravel-fix.sh ~/dotfiles/scripts/
 cp -r scipts/wallpaper.sh ~/dotfiles/hypr/scripts/
@@ -216,12 +220,9 @@ bat cache --build
 bat --list-themes | grep tokyo # should output "tokyonight_night"
 echo '--theme="tokyonight_night"' >> "$(bat --config-dir)/config"
 
-#needs testing
-zsh #not working in bash
-echo '\n[initial_session]\ncommand = "Hyprland"\nuser =' "$USER" | sudo tee -a /etc/greetd/config.toml
-
-#check if everything is ok
-bat /etc/greetd/config.toml
+#Display manager
+sudo pacman -S --noconfirm sddm
+sudo systemctl enable sddm.service
 
 echo "     _                   "
 echo "  __| | ___  _ __   ___  "

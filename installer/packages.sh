@@ -21,7 +21,6 @@ removePacman=(
     wlogout
     guvcview 
     imagemagick
-    qalculate-gtk
 )
 
 packagesPacman=(
@@ -64,6 +63,11 @@ packagesYay=(
     paru-bin 
     wttrbar
     visual-studio-code-bin 
+)
+
+emuPacman=(
+    lutris
+    bottles
 )
 
 packagesDev=(
