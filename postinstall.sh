@@ -144,9 +144,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 #switch to zsh shell
 chsh -s $(which zsh)
 
-sudo cat <<EOF | crontab -
-30 0 * * 7 sh ~/.local/share/bin/autobackup.sh 
-EOF
+# sudo cat <<EOF | crontab -
+#30 0 * * 7 sh ~/.local/share/bin/autobackup.sh 
+#EOF
 
 # Enable the Bluetooth servicetem
 sleep 2
@@ -221,8 +221,8 @@ bat --list-themes | grep tokyo # should output "tokyonight_night"
 echo '--theme="tokyonight_night"' >> "$(bat --config-dir)/config"
 
 #Display manager
-sudo pacman -S --noconfirm sddm
-sudo systemctl enable sddm.service
+# sudo pacman -S --noconfirm sddm
+# sudo systemctl enable sddm.service
 
 echo "     _                   "
 echo "  __| | ___  _ __   ___  "
