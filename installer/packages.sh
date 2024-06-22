@@ -20,7 +20,6 @@ removePacman=(
     breeze-icons
     wlogout
     guvcview 
-    imagemagick
 )
 
 packagesPacman=(
