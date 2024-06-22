@@ -34,7 +34,7 @@ _installPackagesYay "${packagesYay[@]}";
 
 # Stage 1 - main components
 echo -e "$CNT - Installing main components, this may take a while..."
-_installPackagesPacman "${emuPacman[@]}";
+_installPackagesYay "${emuPacman[@]}";
 
 #remove scripts
 rm ~/dotfiles/scripts/autolock.sh
@@ -118,8 +118,7 @@ Miya-icon-theme/install.sh -black
 rm -rf Miya-icon-theme 
 
 git clone https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git
-cp -r Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-B ~/.local/share/themes/
-cp -r Tokyo-Night-GTK-Theme/themes/Tokyonight-Storm-B ~/.local/share/themes/
+Tokyo-Night-GTK-Theme/themes/install.sh
 rm -rf Tokyo-Night-GTK-Theme 
 
 # setup the first look and feel as dark
