@@ -50,8 +50,6 @@ rm -rf ~/dotfiles/nvim ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim mv
 # copy dotfiles (cava, fastfetch,starship, zsh)
 cp -r scipts/backup.sh ~/dotfiles/scripts/
 cp -r scipts/backup-dots.sh ~/dotfiles/scripts/
-cp -r scipts/laravel-fix.sh ~/dotfiles/scripts/
-cp -r scipts/wallpaper.sh ~/dotfiles/hypr/scripts/
 cp -r dotfiles/cava ~/dotfiles/
 cp -r dotfiles/cmus ~/dotfiles/
 cp -r dotfiles/kitty ~/dotfiles/
@@ -68,7 +66,6 @@ ln -s ~/dotfiles/cava/ ~/.config/
 ln -s ~/dotfiles/cmus/ ~/.config/
 ln -s ~/dotfiles/kitty/ ~/.config/
 ln -s ~/dotfiles/fastfetch/ ~/.config/
-ln -s ~/dotfiles/neofetch/ ~/.config/
 ln -s ~/dotfiles/zsh/ ~/.config/
 ln -s ~/dotfiles/.zshrc ~
 ln -s ~/dotfiles/yazi/ ~/.config/
@@ -91,7 +88,7 @@ rm ~/.config/vim
 rm ~/.config/wlogout
 
 # settings
-sudo sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
+#sudo sed -i 's/^#ParallelDownloads/ParallelDownloads/' /etc/pacman.conf
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
 sudo sed -i '/^ParallelDownloads = .*/a ILoveCandy' /etc/pacman.conf
@@ -148,9 +145,6 @@ chsh -s $(which zsh)
 #30 0 * * 7 sh ~/.local/share/bin/autobackup.sh 
 #EOF
 
-# Enable the Bluetooth servicetem
-sleep 2
-
 # Enable the reflector mirror update
 echo -e "$CNT - Timer Services...\n"
 sudo systemctl enable reflector.timer
@@ -204,10 +198,6 @@ echo "brave" > ~/dotfiles/.settings/browser.sh
 cp -r themes/custom ~/dotfiles/waybar/themes
 echo "/custom;/custom/light" > ~/.cache/.themestyle.sh
 
-#Display manager
-sudo pacman -S --noconfirm greetd
-sudo systemctl enable greetd.service
-
 # Copy hook.js
 cp -f hook.js ~/dotfiles-version/
 
@@ -221,8 +211,11 @@ bat --list-themes | grep tokyo # should output "tokyonight_night"
 echo '--theme="tokyonight_night"' >> "$(bat --config-dir)/config"
 
 #Display manager
-# sudo pacman -S --noconfirm sddm
-# sudo systemctl enable sddm.service
+sudo pacman -S --noconfirm sddm
+sudo systemctl enable sddm.service
+
+# Cleaning orphan files
+sudo pacman -Rns --noconfirm $(pacman -Qtdq)
 
 echo "     _                   "
 echo "  __| | ___  _ __   ___  "
@@ -233,6 +226,3 @@ echo "                         "
 echo  "Remember to check the settings in /etc/xdg/reflector/reflector.conf"
 echo ""
 echo "Please reboot to start hyprland. Enjoy"
-
-# Cleaning orphan files
-sudo pacman -Rns --noconfirm $(pacman -Qtdq)
