@@ -32,10 +32,6 @@ _installPackagesPacman "${packagesPacman[@]}";
 echo -e "$CNT - Installing AUR system tools, this may take a while..."
 _installPackagesYay "${packagesYay[@]}";
 
-# Stage 1 - main components
-echo -e "$CNT - Installing main components, this may take a while..."
-_installPackagesYay "${emuPacman[@]}";
-
 #remove scripts
 rm ~/dotfiles/scripts/autolock.sh
 rm ~/dotfiles/scripts/bravebookmarks.sh
