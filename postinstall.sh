@@ -1,3 +1,4 @@
+#!/bin/bash
 #patch for ML4W dotfiles
 #patch ment for https://gitlab.com/stephan-raabe/dotfiles by Stephan Raabe
 
