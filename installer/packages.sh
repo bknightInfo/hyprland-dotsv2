@@ -20,6 +20,9 @@ removePacman=(
     breeze-icons
     wlogout
     guvcview 
+    vlc
+    mpv
+    nautilus
 )
 
 packagesPacman=(
@@ -31,15 +34,11 @@ packagesPacman=(
     fzf 
     less 
     jq 
-    thunar-volman 
-    thunar-archive-plugin
     ripgrep 
-    neofetch 
     fastfetch
     noto-fonts-cjk 
     noto-fonts-emoji 
     poppler 
-    ttf-jetbrains-mono
     ttf-jetbrains-mono-nerd 
     reflector 
     unarchiver 
@@ -53,70 +52,24 @@ packagesPacman=(
 )    
 
 packagesYay=(
-    brave-bin 
     cava-git  
     fnm-bin 
     grimblast-git 
-    solaar 
     zsh-autocomplete-git 
     paru-bin 
     wttrbar
-    visual-studio-code-bin 
 )
 
-emuPacman=(
-    wine 
-    giflib 
-    lib32-giflib 
-    libpng 
-    lib32-libpng 
-    libldap 
-    lib32-libldap 
-    gnutls 
-    lib32-gnutls 
-    mpg123 
-    lib32-mpg123 
-    openal 
-    lib32-openal 
-    v4l-utils 
-    lib32-v4l-utils 
-    libpulse 
-    lib32-libpulse 
-    libgpg-error 
-    lib32-libgpg-error 
-    alsa-plugins 
-    lib32-alsa-plugins 
-    alsa-lib 
-    lib32-alsa-lib 
-    libjpeg-turbo 
-    lib32-libjpeg-turbo 
-    sqlite 
-    lib32-sqlite 
-    libxcomposite 
-    lib32-libxcomposite 
-    libxinerama 
-    lib32-libgcrypt 
-    libgcrypt 
-    lib32-libxinerama 
-    ncurses 
-    lib32-ncurses 
-    ocl-icd 
-    lib32-ocl-icd 
-    libxslt 
-    lib32-libxslt 
-    libva 
-    lib32-libva 
-    gtk3 
-    lib32-gtk3 
-    gst-plugins-base-libs 
-    lib32-gst-plugins-base-libs 
-    vulkan-icd-loader 
-    lib32-vulkan-icd-loader
-    lutris
-    bottles
+packagesFlatpak=(
+    com.github.tchx84.Flatseal
+    com.brave.Browser
+    com.makemkv.MakeMKV
+    com.usebottles.bottles
+    com.visualstudio.code
+    org.onlyoffice.desktopeditors
+    io.github.celluloid_player.Celluloid
+    io.github.pwr_solaar.solaar
+    io.podman_desktop.PodmanDesktop
+    net.lutris.Lutris
 )
 
-packagesDev=(
-    docker-compose 
-    docker-desktop
-)

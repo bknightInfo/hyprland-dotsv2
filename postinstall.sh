@@ -32,6 +32,13 @@ _installPackagesPacman "${packagesPacman[@]}";
 echo -e "$CNT - Installing AUR system tools, this may take a while..."
 _installPackagesYay "${packagesYay[@]}";
 
+echo "Adding 'flathub' as repository for 'flatpak'"
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Stage AUR - AUR applications
+echo -e "$CNT - Installing flatpaks, this may take a while..."
+_installPackagesFlatpak "${packagesFlatpak[@]}";
+
 #remove scripts
 rm ~/dotfiles/scripts/autolock.sh
 rm ~/dotfiles/scripts/bravebookmarks.sh

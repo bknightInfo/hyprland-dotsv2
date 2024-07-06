@@ -25,6 +25,18 @@ _isInstalledYay() {
     return; #false
 }
 
+_isInstalledFlatpak() {
+    package="$1";
+    check="$(flatpak list --columns="application" | grep "${package} ")";
+    if [ -n "${check}" ] ; then
+        echo 0; #'0' means 'true' in Bash
+        return; #true
+    fi;
+    echo 1; #'1' means 'false' in Bash
+    return; #false
+}
+
+
 # ------------------------------------------------------
 # Function Install all package if not installed
 # ------------------------------------------------------
@@ -83,4 +95,19 @@ _removePackagesPacman() {
 
    #printf "Package not installed:\n%s\n" "${toInstall[@]}";
    sudo pacman -Rcns --noconfirm "${toInstall[@]}";
+}
+
+_installPackagesFlatpak() {
+     toInstall=();
+    for pkg; do
+        sudo flatpak install -y flathub "${pkg[@]}";
+        if [[ $(_isInstalledFlatpak "${pkg}") == 0 ]]; then
+            echo ":: ${pkg} is installed.";
+            toInstall+=("${pkg}");
+            continue;
+        fi;
+    done;
+
+
+    sudo flatpak install -y flathub "${toInstall[@]}";
 }
