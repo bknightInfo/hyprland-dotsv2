@@ -6,10 +6,9 @@ source installer/functions.sh
 source installer/packages.sh
 
 #colors
-COK="[\e[1;32mOK\e[0m]"
-CER="[\e[1;31mERROR\e[0m]"
-
 # Set some colors for output messages -- future work
+# COK="[\e[1;32mOK\e[0m]"
+# CER="[\e[1;31mERROR\e[0m]"
 # OK="$(tput setaf 2)[OK]$(tput sgr0)"
 # ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
 # NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
@@ -18,8 +17,7 @@ CER="[\e[1;31mERROR\e[0m]"
 # ORANGE=$(tput setaf 166)
 # YELLOW=$(tput setaf 3)
 # RESET=$(tput sgr0)
-
-INSTLOG="postinstall-$(date +%d-%H%M%S).log"
+# INSTLOG="postinstall-$(date +%d-%H%M%S).log"
 
 # clean up files
 echo -e "$CNT - removing unwanted applications"
@@ -142,7 +140,7 @@ echo 'GRUB_THEME="/boot/grub/themes/darkmatter/theme.txt"' | sudo tee -a /etc/de
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 #switch to zsh shell
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 # sudo cat <<EOF | crontab -
 #30 0 * * 7 sh ~/.local/share/bin/autobackup.sh 
@@ -170,8 +168,8 @@ rm -rf ~/wallpaper/
 cp -f wallpaper/*.* ~/Pictures/Wallpapers
 
 # Cache file for holding the current wallpaper
-echo "* { current-image: url(\"$HOME/Pictures/Wallpapers/default.jpg\", height); }" > $HOME/.cache/current_wallpaper.rasi
-echo "$HOME/Pictures/Wallpapers/default.jpg" > $HOME/.cache/current_wallpaper
+echo "* { current-image: url(\"$HOME/Pictures/Wallpapers/default.jpg\", height); }" > "$HOME"/.cache/current_wallpaper.rasi
+echo "$HOME/Pictures/Wallpapers/default.jpg" > "$HOME"/.cache/current_wal
 
 # override settings from dotfilestem
 cp -f dotfiles/keybindings.conf ~/dotfiles/hypr/conf/keybindings/
@@ -211,7 +209,7 @@ cd "$(bat --config-dir)/themes"
 curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/main/extras/sublime/tokyonight_night.tmTheme
 bat cache --build
 bat --list-themes | grep tokyo # should output "tokyonight_night"
-echo '--theme="tokyonight_night"' >> "$(bat --config-dir)/config"
+echo '--theme="tokyonight_night"' >> "$(cat --config-dir)/config"
 
 #Display manager
 sudo pacman -S --noconfirm sddm
