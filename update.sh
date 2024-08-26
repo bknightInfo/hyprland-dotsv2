@@ -31,13 +31,6 @@ _installPackagesPacman "${packagesPacman[@]}";
 echo -e "$CNT - Installing AUR system tools, this may take a while..."
 _installPackagesYay "${packagesYay[@]}";
 
-echo "Adding 'flathub' as repository for 'flatpak'"
-flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-# Stage AUR - AUR applications
-echo -e "$CNT - Installing flatpaks, this may take a while..."
-_installPackagesFlatpak "${packagesFlatpak[@]}";
-
 #remove scripts
 rm ~/dotfiles/scripts/autolock.sh
 rm ~/dotfiles/scripts/bravebookmarks.sh
@@ -193,7 +186,7 @@ rm ~/dotfiles/scripts/templates.sh
 
 # Write default applications 
 echo "kitty" > ~/dotfiles/.settings/terminal.sh
-echo "brave" > ~/dotfiles/.settings/browser.sh
+echo "firefox" > ~/dotfiles/.settings/browser.sh
 
 # Copy my custom waybar config
 cp -r themes/custom ~/dotfiles/waybar/themes
@@ -212,8 +205,12 @@ bat --list-themes | grep tokyo # should output "tokyonight_night"
 echo '--theme="tokyonight_night"' >> "$(bat --config-dir)/config"
 
 #Display manager
-sudo pacman -S --noconfirm sddm
-sudo systemctl enable sddm.service
+#sudo pacman -S --noconfirm sddm
+#sudo systemctl enable sddm.service
+
+#greetd setup
+sudo cp greetd/* /etc/greetd/
+sudo systemctl enable greetd.service
 
 # Cleaning orphan files
 sudo pacman -Rns --noconfirm "$(pacman -Qtdq)"

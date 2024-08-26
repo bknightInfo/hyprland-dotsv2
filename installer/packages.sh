@@ -1,76 +1,56 @@
 #!/bin/bash
 # List of packages to uninstall
 removePacman=(
-    alacritty  
-    vim 
-    gvim 
+    alacritty
+    vim
+    gvim
     chromium
-    freerdp 
-    mousepad 
-    python-pip 
-    python-psutil 
-    python-rich 
-    python-click 
-    man-pages 
-    nm-connection-editor 
-    xdg-desktop-portal 
-    pfetch 
-    trizen 
-    pacseek  
-    papirus-icon-theme 
+    freerdp
+    mousepad
+    python-pip
+    python-psutil
+    python-rich
+    python-click
+    python-gobject
+    man-pages
+    nm-connection-editor
+    trizen
+    pacseek
+    papirus-icon-theme
     breeze-icons
-    wlogout
-    guvcview 
-    vlc
+    guvcview
     mpv
     nautilus
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    pinta
+    breeze
+    qt6ct
+    sddm
 )
 
 packagesPacman=(
-    bat 
-    cronie 
+    bat
+    cronie
     kitty
-    fd 
-    ffmpegthumbnailer 
-    fzf 
-    less 
-    jq 
-    ripgrep 
-    fastfetch
-    noto-fonts-cjk 
-    noto-fonts-emoji 
-    poppler 
-    ttf-jetbrains-mono-nerd 
-    reflector 
-    unarchiver 
-    xfce4-settings 
-    yazi 
-    zsh 
-    zsh-completions 
-    zsh-syntax-highlighting 
-    gst-plugins-good 
-    qt5-wayland
-)    
+    fd
+    ffmpegthumbnailer
+    fzf
+    poppler
+    ttf-jetbrains-mono-nerd
+    reflector
+    xfce4-settings
+    yazi
+    zsh
+    greetd
+    greetd-regreet
+)
 
 packagesYay=(
-    cava-git  
-    fnm-bin 
-    grimblast-git 
-    zsh-autocomplete-git 
-    paru-bin 
+    cava
+    zed-preview-bin
+    onlyoffice-bin
+    paru-bin
+    solaar
     wttrbar
 )
-
-packagesFlatpak=(
-    com.github.tchx84.Flatseal
-    com.brave.Browser
-    com.makemkv.MakeMKV
-    com.usebottles.bottles
-    com.visualstudio.code
-    org.onlyoffice.desktopeditors
-    io.github.celluloid_player.Celluloid
-    io.github.pwr_solaar.solaar
-    io.podman_desktop.PodmanDesktop
-    net.lutris.Lutris
-)
-
